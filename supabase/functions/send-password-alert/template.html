@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<title>Password Change Alert</title>
+<style>
+  :root {
+    color-scheme: light dark;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff; color: #171717;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 500px; margin: 0 auto; padding: 30px 20px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 20px 0; color: #f59e0b; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; margin: 0 0 16px 0; color: #000000; }
+  p { font-size: 15px; line-height: 1.6; margin: 8px 0; color: #525252; }
+  
+  .details-box { 
+    margin: 16px 0; 
+    padding: 16px; 
+    border-radius: 12px; 
+    font-size: 14px; 
+    background-color: #f9fafb;
+    border: 1px solid #f3f4f6;
+  }
+  .details-line { 
+    margin: 0 0 10px 0; 
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-line:last-child { margin-bottom: 0; }
+  .details-label { font-weight: 500; color: #6b7280; }
+  .details-value { font-weight: 600; color: #111827; text-align: right; max-width: 65%; }
+  
+  .footer { border-top: 1px solid #f3f4f6; margin-top: 24px; padding-top: 16px; }
+  .footer p { font-size: 12px; color: #9ca3af; margin: auto; }
+  .footer .brand { font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Outfit', sans-serif;}
+  
+  .link { color: #f59e0b; text-decoration: underline; font-weight: 600; }
+  .link:hover { color: #d97706; }
+
+  @media (prefers-color-scheme: dark) {
+    body { background-color: #0a0a0a; color: #ededed; }
+    h2 { color: #ffffff; }
+    p { color: #a3a3a3; }
+    .details-box { background-color: #171717; border-color: #262626; color: #a3a3a3; }
+    .details-label { color: #9ca3af; }
+    .details-value { color: #f3f4f6; }
+    .footer { border-color: #262626; }
+    .footer p { color: #6b7280; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="logo">Ceaznet</h1>
+    <h2>Password Changed</h2>
+    <p>Hi there, the password for your account <strong>{{ .Email }}</strong> was just updated successfully.</p>
+    
+    <div class="details-box">
+      <div class="details-line">
+        <span class="details-label">Device</span>
+        <span class="details-value">{{ .Device }}</span>
+      </div>
+      <div class="details-line">
+        <span class="details-label">Location</span>
+        <span class="details-value">{{ .Location }}</span>
+      </div>
+      <div class="details-line">
+        <span class="details-label">Date & Time</span>
+        <span class="details-value">{{ .Time }}</span>
+      </div>
+    </div>
+    
+    <p style="font-size: 15px; color: #6b7280; margin-bottom: 24px;">
+      If you did not make this change, please contact <a href="{{ .SiteURL }}/support?guest=true&topic=Unauthorized%20Password%20Change&message=I%20did%20not%20authorize%20a%20password%20change%20on%20my%20account.&email={{ .Email }}" class="link">Support</a> immediately to secure your account.
+    </p>
+
+    <div class="footer">
+      <p class="brand">&copy; 2026 Ceaznet</p>
+      <p>Keeping your account safe</p>
+    </div>
+  </div>
+</body>
+</html>
